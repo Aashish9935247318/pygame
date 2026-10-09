@@ -35,31 +35,32 @@ class Sprite(pygame.sprite.Sprite):
         pygame.display.set_caption("Sprite Collection")
         all_sprites = pygame.sprite.Group()
 
-        sprite1 = Sprite(pygame.Color('black'), 20, 30)
-        sprite1.rect.x, sprite1.rect.y = random.randint(
+sprite1 = Sprite(pygame.Color('black'), 20, 30)
+sprite1.rect.x, sprite1.rect.y = random.randint(
             0, SCREEN_WIDTH - sprite1.rect.width), random.randint(
-        all_sprites.add(sprite1)
+                0, SCREEN_HEIGHT - sprite1.rect.height)
+all_sprites.add(sprite1)
 
-        sprite2 = Sprite(pygame.Color('red'), 20, 30)
-        sprite2.rect.x, sprite2.rect.y = random.randint(
+sprite2 = Sprite(pygame.Color('red'), 20, 30)
+sprite2.rect.x, sprite2.rect.y = random.randint(
             0, SCREEN_WIDTH - sprite2.rect.width), random.randint(
                 0, SCREEN_HEIGHT - sprite2.rect.height)
-        all_sprites.add(sprite2)
+all_sprites.add(sprite2)
 
-        running, won = True, False
-        clock = pygame.time.Clock()
+running, won = True, False
+clock = pygame.time.Clock()
 
-        while running:
-             for event in pygame.event.get():
-             if event.type == pygame.QUIT or (event.type == pygame.KeyDown and event.key == pygame.K_x):
+while running:
+        for event in pygame.event.get():
+               if event.type == pygame.QUIT or (event.type == pygame.KeyDown and event.key == pygame.K_x):
 
 
-             running = False
+                running = False
 
 
         if not won:
              keys = pygame.key.get_pressed()
-             x_change = (keys[pygame.K_RIGHT]) -keys[pygame.K_LEFT]) * MOVEMENT_SPEED
+             x_change = (keys[pygame.K_RIGHT]) -keys[pygame.K_LEFT] * MOVEMENT_SPEED
              y_change = (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * MOVEMENT_SPEED
              sprite1.move(x_change, y_change)
 
@@ -78,4 +79,4 @@ class Sprite(pygame.sprite.Sprite):
             pygame.display.flip()
             clock.tick(90)
 
-    pygame.quit()
+pygame.quit()
