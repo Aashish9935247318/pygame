@@ -8,8 +8,8 @@ FONT_SIZE = 72
 
 pygame.init()
 
-background_image = pygame.transform.scale(pygame.image.load("bg.jpg"))
-(SCREEN_WIDTH, SCREEN_HEIGHT)
+background_image = pygame.transform.scale(pygame.image.load("bg.jpg"),
+(SCREEN_WIDTH, SCREEN_HEIGHT))
 
 
 
@@ -31,9 +31,10 @@ class Sprite(pygame.sprite.Sprite):
             min(self.rect.x + x_change, SCREEN_WIDTH - self.rect.width), 0)
         self.rect.y = max(
             min(self.rect.y + y_change, SCREEN_HEIGHT - self.rect.height), 0)
-        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pygame.display.set_caption("Sprite Collection")
-        all_sprites = pygame.sprite.Group()
+    
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Sprite Collection")
+all_sprites = pygame.sprite.Group()
 
 sprite1 = Sprite(pygame.Color('black'), 20, 30)
 sprite1.rect.x, sprite1.rect.y = random.randint(
@@ -52,7 +53,7 @@ clock = pygame.time.Clock()
 
 while running:
         for event in pygame.event.get():
-               if event.type == pygame.QUIT or (event.type == pygame.KeyDown and event.key == pygame.K_x):
+               if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_x):
 
 
                 running = False
@@ -76,7 +77,7 @@ while running:
             screen.blit(win_text, ((SCREEN_WIDTH - win_text.get_width()) // 2,
                                    (SCREEN_HEIGHT - win_text.get_height()) // 2))
 
-            pygame.display.flip()
-            clock.tick(90)
+        pygame.display.flip()
+        clock.tick(90)
 
 pygame.quit()
